@@ -33,6 +33,7 @@ namespace TimCoreyInDepthSectionTwo
             services.AddScoped<IDataAccessScoped, DummyDumbDataAccess>();
             services.AddTransient<IDataAccessTransient, DummyDumbDataAccess>();
             services.AddTransient<InjectedDataService>();
+            services.AddScoped<CounterService>();
 
         }
 

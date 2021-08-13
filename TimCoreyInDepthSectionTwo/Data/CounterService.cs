@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TimCoreyInDepthSectionTwo.Data
 {
-    public class CounterService
+    public class CounterService : ICounterService
     {
         private readonly ILogger logger;
 

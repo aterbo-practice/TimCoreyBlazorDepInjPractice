@@ -1,20 +1,30 @@
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace TimCoreyInDepthSectionTwo.Data
 {
     public class WeatherForecastService
     {
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
+        private readonly IConfiguration _config;
+        public WeatherForecastService(IConfiguration config)
+        {
+            _config = config;
+        }
 
         public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
         {
             var rng = new Random();
-            return Task.FromResult(Enumerable.Range(1, 5).Select(index => new WeatherForecast
+
+            int numberOfDays = _config.GetValue<int>("WeatherForecast:DaysForecast");
+            return Task.FromResult(Enumerable.Range(1, numberOfDays).Select(index => new WeatherForecast
             {
                 Date = startDate.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),

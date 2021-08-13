@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +13,20 @@ namespace TimCoreyInDepthSectionTwo.Data
         private int dumbDataInt;
         private string dumbDataString;
         private readonly ILogger<DummyDumbDataAccess> logger;
+        private readonly IConfiguration config;
 
-        public DummyDumbDataAccess(ILogger<DummyDumbDataAccess> logger)
+        public DummyDumbDataAccess(ILogger<DummyDumbDataAccess> logger, IConfiguration config)
         {
             this.logger = logger;
-
+            this.config = config;
             Random random = new Random();
             dumbDataInt = random.Next(74);
             dumbDataString = random.Next(10).ToString();
             logger.LogWarning("Random number generated: {dumbDataInt}", dumbDataInt);
+
+            dumbDataInt = config.GetValue<int>("NotSoRandomRandomInt");
+            logger.LogWarning("dumbDataInt reset to NotSoRandomRandomInt: {dumbDataInt}", dumbDataInt);
+
         }
 
         public DummyDumbDataAccess()
@@ -33,7 +39,7 @@ namespace TimCoreyInDepthSectionTwo.Data
 
         public int getDumbInt()
         {
-            logger.LogWarning("Random number returned: {dumbDataInt}", dumbDataInt);
+            logger.LogWarning("dumbDataInt number returned: {dumbDataInt}", dumbDataInt);
             return dumbDataInt;
         }
 

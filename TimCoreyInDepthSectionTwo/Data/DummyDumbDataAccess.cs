@@ -11,6 +11,7 @@ namespace TimCoreyInDepthSectionTwo.Data
     {
 
         private int dumbDataInt;
+        private int counterValue;
         private string dumbDataString;
         private readonly ILogger<DummyDumbDataAccess> logger;
         private readonly IConfiguration config;
@@ -27,6 +28,8 @@ namespace TimCoreyInDepthSectionTwo.Data
             dumbDataInt = config.GetValue<int>("NotSoRandomRandomInt");
             logger.LogWarning("dumbDataInt reset to NotSoRandomRandomInt: {dumbDataInt}", dumbDataInt);
 
+            counterValue = 0;
+            logger.LogWarning("counterValue set to 0 upon DataAccess creation");
         }
 
         public DummyDumbDataAccess()
@@ -47,5 +50,17 @@ namespace TimCoreyInDepthSectionTwo.Data
         {
             return dumbDataString;
         }
+
+        public int getCounterValue()
+        {
+            return counterValue;
+        }
+
+        public void addOneToCounter()
+        {
+            counterValue++;
+            logger.LogWarning("Added one to counter, current value is {counterValue}", counterValue);
+        }
+
     }
 }

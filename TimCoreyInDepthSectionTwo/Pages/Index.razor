@@ -14,9 +14,8 @@
     Welcome to your new app.
 
     Singleton: @SingletonDataService.getDumbInt()
-   
-    Scoped: @ScopedDataService.getDumbInt()
-    Transient @TransientDataService.getDumbInt()
+       Scoped: @ScopedDataService.getDumbInt()
+    Transient: @TransientDataService.getDumbInt()
 
 
     <p>
@@ -34,6 +33,6 @@
     protected override async Task OnInitializedAsync()
     {
         injectedData = await InjectedDataService.GetInjectedDataClass();
-        log.LogInformation("getting injectedData");
+        log.LogWarning("getting injectedData");
     }
 }

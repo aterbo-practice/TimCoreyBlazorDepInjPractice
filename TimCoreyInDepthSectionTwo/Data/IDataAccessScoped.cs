@@ -4,5 +4,10 @@
     {
         int getDumbInt();
         string getDumbString();
+
+        int getCounterValue();
+
+        void addOneToCounter();
+
     }
 }

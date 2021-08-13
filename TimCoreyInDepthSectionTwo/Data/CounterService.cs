@@ -8,7 +8,7 @@ namespace TimCoreyInDepthSectionTwo.Data
 {
     public class CounterService : ICounterService
     {
-        private readonly ILogger logger;
+        private readonly ILogger<CounterService> logger;
 
         public int CounterValue { get; private set; }
 
@@ -18,7 +18,7 @@ namespace TimCoreyInDepthSectionTwo.Data
             logger.LogInformation("Counter Incremented to: {CounterValue}", CounterValue);
         }
 
-        public CounterService(ILogger logger)
+        public CounterService(ILogger<CounterService> logger)
         {
             this.logger = logger;
         }

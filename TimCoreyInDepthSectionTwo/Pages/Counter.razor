@@ -1,11 +1,11 @@
 ﻿@page "/counter"
 
 @using TimCoreyInDepthSectionTwo.Data
-@inject IDataAccessScoped ScopedDataService
+@inject ICounterService CounterService
 
 <h1>Counter</h1>
 
-<p>Current count: @ScopedDataService.getCounterValue()</p>
+<p>Current count: @CounterService.CounterValue</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
@@ -13,7 +13,7 @@
 
     private void IncrementCount()
     {
-        ScopedDataService.addOneToCounter();
+        CounterService.IncreaseCounter();
     }
 
 }

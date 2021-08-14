@@ -34,6 +34,7 @@ namespace TimCoreyInDepthSectionTwo
             services.AddTransient<IDataAccessTransient, DummyDumbDataAccess>();
             services.AddTransient<InjectedDataService>();
             services.AddScoped<ICounterService, CounterService>();
+            services.AddSingleton<IVotingService, VotingService>();
 
         }
 

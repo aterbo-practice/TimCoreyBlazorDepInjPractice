@@ -1,0 +1,55 @@
+﻿@inherits LayoutComponentBase
+
+@using TimCoreyInDepthSectionTwo.Data
+@inject IVotingService VotingService
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <div class="main">
+        <div class="top-row px-4">
+            THIS IS AN EXPERIMENTAL PAGE!!
+        </div>
+        <h3>Do you like this page?</h3>
+   
+        <p>
+            <button type="button" class="btn btn-primary" @onclick="YesVote">Yes, I love it</button>
+                ||    
+            <button type="button" class="btn btn-danger" @onclick="NoVote">No, it's dumb'</button>
+        </p>
+
+        <p>Yes Votes: @VotingService.YesValue      ||     No Votes: @VotingService.NoValue</p>
+
+        <div class="content px-4">
+            @Body
+        </div>
+        
+        
+        <footer class="page-footer font-small primary-color-dark">
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">
+                © 2021 Copyright but not really because this is just a test
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+    </div>
+</div>
+
+
+
+
+@code {
+    public void YesVote()
+    {
+        VotingService.YesVote();
+    }
+
+    public void NoVote()
+    {
+        VotingService.NoVote();
+    }
+}
